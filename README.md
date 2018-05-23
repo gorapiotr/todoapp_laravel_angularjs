@@ -2,7 +2,8 @@
 
 #### Laravel
 [Models](https://github.com/gorapiotr/todoapp_laravel_angularjs/tree/master/app) <br>
-[Controllers](https://github.com/gorapiotr/todoapp_laravel_angularjs/tree/master/app/Http/Controllers)
+[Controllers](https://github.com/gorapiotr/todoapp_laravel_angularjs/tree/master/app/Http/Controllers) <br>
+[Database](https://github.com/gorapiotr/todoapp_laravel_angularjs/tree/master/database)
 
 
 #### AngularJS
