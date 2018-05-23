@@ -1,0 +1,62 @@
+<div ng-controller="commentsCtrl" ng-init="init()">
+        <!-- Column 2-->
+        <div class="col-sm-8"> 
+                <!-- User select list -->
+                <select class="form-control" ng-model="currentUserId"  ng-click="getUserById(currentUserId); getUserComments(currentUserId)">
+                        <option style="display:none" value="">Select a User</option>
+                        <option ng-repeat="u in users" value={{u.id}}>{{u.name}}</option>
+                </select>  
+
+                <br>
+                <br>
+
+                <!-- Comment list -->
+                <div ng-repeat="comment in userComments" ng-show="showComments">
+                        <div class="panel panel-success">
+                                <div class="panel-heading">
+                                        User name: <strong>{{currentUserName}}</strong> 
+                                        Created at: <strong>{{comment.created_at}}</strong> 
+                                        Updated at: <strong>{{comment.updated_at}}</strong>
+                                        <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true" ng-click="removeComment(comment.id)"></span>
+                                        <span class="glyphicon glyphicon-edit pull-right" style="padding-right:5px" aria-hidden="true"  ng-click="selectCommentToEdit(comment.id,comment.content)"></span>
+                                </div>
+                                <div class="panel-body">
+                                        {{comment.content}}
+                                </div>
+                        </div>
+
+                <!-- Comment Edit -->
+                        <div ng-if="editCommentVar && selectedCommentId===comment.id">
+                                <hr>
+                                <h4>Edit Comment</h4>
+                                <div class="input-group">
+                                        <input type="text" class="form-control" ng-model="selectedCommentContent" id="edit" ng-keydown="$event.keyCode === 13 && editComment(selectedCommentContent)">
+                                        <span class="input-group-btn">
+                                                <button class="btn btn-info" type="button" ng-click="editComment(selectedCommentContent)">Dodaj</button>
+                                        </span>
+                                </div>
+                                <hr>
+                                <br>
+                        </div>
+
+                </div>
+
+                <!-- Add new Comment -->
+                <div ng-show="addNewCommentVar">
+                        <hr>
+                        <h4>Add Comment</h4> 
+                        <div class="input-group">
+                                <input type="text" class="form-control" ng-model="newComment" id="add" ng-keydown="$event.keyCode === 13 && addNewComment(currentUserId, newComment)">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" ng-click="addNewComment(currentUserId, newComment)">Dodaj</button>
+                                </span>
+                        </div>
+                </div>  
+        </div>
+        
+        <!--Column 3-->
+        <div class="col-sm-2">
+
+        </div> 
+
+</div>

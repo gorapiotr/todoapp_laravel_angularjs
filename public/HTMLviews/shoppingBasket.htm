@@ -1,0 +1,42 @@
+<div  ng-controller="shoppingBasketCtrl" ng-init="init()"> 
+    
+    <!-- Column 2-->
+    <div class="col-sm-7">           
+        <div ng-include="shoppingBasketUrl">
+           
+        </div>
+    
+    </div>
+
+    <!-- Column 3-->
+    <div class="col-sm-3">
+        <ul class="thumbnails list-unstyled">
+            <li class="col-md-12">
+                <div class="thumbnail" style="padding: 0">
+                    <div style="padding:4px">
+                        <img alt="300x200" style="width: 100%" src="http://placehold.it/200x150">
+                    </div>
+                    <div class="caption">
+                        <h2>{{userName}}</h2>
+                        <p>Created at: <strong>{{userCreatedAt}}</strong></p>
+                    </div>
+                    <div class="modal-footer" style="text-align: left">
+                        <p ng-click="changeUrl(); getUserProductList()"><span class="glyphicon glyphicon-shopping-cart"></span> My Shopping Basket</p>
+                        <p ng-click="changeUrl('AddNewItem')"><span class="glyphicon glyphicon-plus"></span> Add new product</p>
+                    </div>
+                </div>
+            </li>
+        </ul>  
+        <!-- Search item -->
+        <h4>Search product:</h4>
+        <div class="input-group">
+                <input type="text" class="form-control" ng-model="item" id="add" ng-keydown="$event.keyCode === 13 && findProductbyName(item)">
+                <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" ng-click="findProductbyName(item)">Search</button>
+                </span>
+        </div>
+    </div>
+
+    
+
+</div>
